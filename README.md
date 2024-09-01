@@ -25,6 +25,14 @@
 ## Moon节点服务端（docker方式部署）
 按照实际使用场景，调整`Moon_srv-docker_zerotier_moon_renew.sh`脚本中的变量，并添加到计划任务中，定时执行频率推荐设置为15分钟~1小时之间。
 
+使用crontab来定时执行脚本，输入以下命令来编辑当前用户的crontab文件：
+
+>crontab -e
+
+然后在打开的编辑器中添加一行如下的内容，表示每天凌晨2点执行update_moon.sh脚本：
+
+>0 2 * * * /etc/config/zero/update_moon.sh
+
 ## Windows客户端（ZeroTier为默认安装，注意查看可执行文件的路径）
 - 将`Win_corn-renew_zerotier.xml`文件中的`a9a8a7a6a5`更改为你当前Moon节点的ID。
 - 将修改好的`Win_corn-renew_zerotier.xml`文件导入到Windows的`任务计划程序`中，并将执行的用户调整为当前的管理员用户账号（非Administrator）。
